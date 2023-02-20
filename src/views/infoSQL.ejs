@@ -1,0 +1,37 @@
+<%- include('./includes/head.ejs') %>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-6 pt-4">
+                <% format.map( product => { %>
+                <h4>Info about "<%=product.name%>" in SQL</h4>
+                <form action="/updateSQL/<%=product.id%>?_method=PUT" method="POST">
+                    <div class="input-group mb-3">
+                        <div class="form-floating">
+                          <input type="text" class="form-control" id="floatingInputGroup1" placeholder="Name" name="nameSQL" value="<%=product.name%>">
+                          <label for="floatingInputGroup1">Name</label>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="floatingInputGroup1" placeholder="Description" name="description" value="<%=product.description%>">
+                            <label for="floatingInputGroup1">Description</label>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="form-floating">
+                            <input type="number" class="form-control" id="floatingInputGroup1" placeholder="Quantity" name="quantity" value="<%=product.quantity%>">
+                            <label for="floatingInputGroup1">Quantity</label>
+                        </div>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-primary" type="submit">Save</button>
+                    </div>
+                </form>
+                <% }) %>
+            </div>
+        </div>
+    </div>
+
+</body>
+<%- include('./includes/scripts.ejs') %>

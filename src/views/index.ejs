@@ -1,0 +1,120 @@
+<%- include('./includes/head.ejs') %>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-6 pt-4">
+                <h4>Data from MySQL:</h4>
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Age</th>
+                        <th scope="col">Job</th>
+                        <th scope="col">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <% result.map( person => { %>
+                      <tr>
+                        <td><%=person.id%></td>
+                        <td><%=person.name%></td>
+                        <td><%=person.age%></td>
+                        <td><%=person.job%></td>
+                        <td>
+                            <a class="btn btn-success m-1" href="/infoMySQL/<%=person.id%>">Modify</a>
+                            <form action="/deleteMySQL/<%=person.id%>?_method=DELETE" method="POST">
+                                <button class="btn btn-danger m-1" type="submit">Delete</button>
+                            </form>
+                        </td>
+                      </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-6 pt-4">
+                <h4>New Person to MySQL:</h4>
+                <form action="/addMySQL" method="POST">
+                    <div class="input-group mb-3">
+                        <div class="form-floating">
+                          <input type="text" class="form-control" id="floatingInputGroup1" placeholder="Name" name="nameMySQL">
+                          <label for="floatingInputGroup1">Name</label>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="form-floating">
+                            <input type="number" class="form-control" id="floatingInputGroup1" placeholder="Age" name="age">
+                            <label for="floatingInputGroup1">Age</label>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="floatingInputGroup1" placeholder="Job" name="job">
+                            <label for="floatingInputGroup1">Job</label>
+                        </div>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-primary" type="submit">Save</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-6 pt-4">
+                <h4>Data from SQL:</h4>
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <% format.map( product => { %>
+                      <tr>
+                        <td><%=product.id%></td>
+                        <td><%=product.name%></td>
+                        <td><%=product.description%></td>
+                        <td><%=product.quantity%></td>
+                        <td>
+                            <a class="btn btn-success m-1" href="/infoSQL/<%=product.id%>">Modify</a>
+                            <form action="/deleteSQL/<%=product.id%>?_method=DELETE" method="POST">
+                                <button class="btn btn-danger m-1" type="submit">Delete</button>
+                            </form>
+                        </td>
+                      </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-6 pt-4">
+                <h4>New product to SQL:</h4>
+                <form action="/addSQL" method="POST">
+                    <div class="input-group mb-3">
+                        <div class="form-floating">
+                          <input type="text" class="form-control" id="floatingInputGroup1" placeholder="Name" name="nameSQL">
+                          <label for="floatingInputGroup1">Name</label>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="form-floating">
+                            <input type="text" class="form-control" id="floatingInputGroup1" placeholder="Description" name="description">
+                            <label for="floatingInputGroup1">Description</label>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="form-floating">
+                            <input type="number" class="form-control" id="floatingInputGroup1" placeholder="Quantity" name="quantity">
+                            <label for="floatingInputGroup1">Quantity</label>
+                        </div>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-primary" type="submit">Save</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+<%- include('./includes/scripts.ejs') %>
