@@ -3,8 +3,8 @@ const router = express.Router();
 const sql = require('mssql');
 
 const config = {
-    user: 'orlando',
-    password: 'orlando',
+    user: '', //Type your SQL Server Authentication User
+    password: '',
     database: 'prueba',
     server: 'localhost',
     options: {
