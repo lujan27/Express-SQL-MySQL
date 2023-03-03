@@ -17,10 +17,10 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use(myConnection(mysql, {
-    user: 'root',
-    password: '',
-    host: 'localhost',
-    port: 8080,
+    user: 'root', //In MySQL the user by default is root
+    password: '', //The password is empty by default as well
+    host: 'localhost', //If you're in a develop enviroment you can put this on host
+    port: 8080, //Check in your connection for your port
     database: 'person'
 }, 'single'));
 
